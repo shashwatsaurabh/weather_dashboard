@@ -160,7 +160,183 @@ body {
   100% { background-position: 100% 100%; }
 }
 
+/* ==== Enhanced Particle Effects ==== */
+/* Clouds */
+.clouds::before {
+  content: '';
+  position: fixed; /* Changed from absolute to fixed for full coverage */
+  top: 10%;
+  left: -100px;
+  width: 200%;
+  height: 100px;
+  background: url('/clouds.svg') repeat-x;
+  animation: cloudMove 60s linear infinite;
+  opacity: 0.2;
+  z-index: 1;
+  pointer-events: none;
+}
 
+.clouds::after {
+  content: '';
+  position: fixed; /* Changed from absolute to fixed for full coverage */
+  top: 20%;
+  left: -150px;
+  width: 200%;
+  height: 150px;
+  background: url('/clouds.svg') repeat-x;
+  animation: cloudMove 90s linear infinite;
+  opacity: 0.15;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Rain */
+.rain::before {
+  content: '';
+  position: fixed; /* Changed from absolute to fixed for full coverage */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/raindrops.svg');
+  background-size: contain;
+  animation: rainFall 1.2s linear infinite;
+  opacity: 0.3;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.rain::after {
+  content: '';
+  position: fixed; /* Changed from absolute to fixed for full coverage */
+  top: -10%;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  background-image: url('/raindrops.svg');
+  background-size: contain;
+  animation: rainFall 1.5s linear infinite;
+  opacity: 0.2;
+  z-index: 1;
+  animation-delay: -0.5s;
+  pointer-events: none;
+}
+
+/* Snow */
+.snow::before {
+  content: '';
+  position: fixed; /* Changed from absolute to fixed for full coverage */
+  top: -10%;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  background-image: url('/snowflakes.svg');
+  background-size: contain;
+  animation: snowFall 6s linear infinite;
+  opacity: 0.3;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.snow::after {
+  content: '';
+  position: fixed; /* Changed from absolute to fixed for full coverage */
+  top: -5%;
+  left: 0;
+  width: 100%;
+  height: 110%;
+  background-image: url('/snowflakes.svg');
+  background-size: 80% 80%;
+  animation: snowFall 8s linear infinite;
+  animation-delay: -3s;
+  opacity: 0.2;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Lightning */
+.stormy::after {
+  content: '';
+  position: fixed; /* Changed from absolute to fixed for full coverage */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  opacity: 0;
+  animation: lightningFlash 8s infinite;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Enhanced Animations */
+@keyframes cloudMove {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes rainFall {
+  0% { background-position: 0 -100%; }
+  100% { background-position: 20% 100%; }
+}
+
+@keyframes snowFall {
+  0% { 
+    background-position: 0 -100px;
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(20px);
+  }
+  100% { 
+    background-position: 0 100vh;
+    transform: translateX(0);
+  }
+}
+
+@keyframes lightningFlash {
+  0%, 95%, 98%, 100% {
+    opacity: 0;
+  }
+  96%, 97% {
+    opacity: 0.8;
+  }
+  99% {
+    opacity: 0.4;
+  }
+}
+
+/* Glassmorphism Styles */
+.weather-card, .search-bar input, .search-tag, .forecast-day {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  animation: titleGlow 3s infinite alternate ease-in-out;
+}
+
+@keyframes titleGlow {
+  0% { text-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); }
+  100% { text-shadow: 0 2px 15px rgba(74, 111, 165, 0.3); }
+}
+
+main {
+  flex: 1;
+  z-index: 2;
+}
 
 /* Search Bar Component with enhanced animation */
 .search-bar {

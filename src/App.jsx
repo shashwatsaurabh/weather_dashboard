@@ -7,8 +7,6 @@ import LoadingSpinner from './components/LoadingSpinner';
 import ErrorMessage from './components/ErrorMessage';
 import RecentSearches from './components/RecentSearches';
 import ThemeToggle from './components/ThemeToggle';
-import WeatherBackground from './components/WeatherBackground';
-
 
 // Helper function
 const getWeatherClass = (weatherMain) => {
@@ -200,7 +198,7 @@ function App() {
       </main>
 
       <footer>
-        <p> Weather data from OpenWeatherMap</p>
+        <p>Created with React.js | Weather data from OpenWeatherMap</p>
       </footer>
     </div>
   );
